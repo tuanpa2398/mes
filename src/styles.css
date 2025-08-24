@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
 #login-page {
     background-color: #e2e3eb;
 }
@@ -8,29 +10,56 @@
     color: white;
     border: none;
     border-radius: 6px;
-    height: 40px;;
-}
-
-.c-pointer {
-    cursor: pointer;
-}
-
-.c-not-allowed {
-    cursor: not-allowed;
-    opacity: 0.65;
+    height: 40px;
 }
 
 .wl-input {
-    height: 43px;
+    border: 1px solid #ccc;
     border-radius: 6px;
+    height: 40px;
+    padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.user-popover li:hover {
+    color: #17506B;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.wl-input:focus {
-    border-color: unset;
-    box-shadow: none;
+#wl-sidebar a:hover {
+    background-color: #17506B;
+    color: white;
+    font-weight: bold;
 }
 
-.form-control:focus{
-    border-color: unset;
-    box-shadow: none;
+#wl-sidebar a.active {
+    color: #17506B;
+    font-weight: bold;
+}
+
+#wl-sidebar a.active:hover {
+    background-color: #17506B;
+    color: white;
+    font-weight: bold;
+}
+
+#modal-change-factory ul li {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    text-align: center ;
+}
+
+#modal-change-factory ul li:hover {
+    background-color: #17506B;
+    color: white;
+    font-weight: bold;
+}
+
+.wl-tabs .p-tab-active {
+    color: #17506B;
+    font-weight: bold;
 }

@@ -1,0 +1,113 @@
+<div class="h-screen flex bg-gray-100">
+  <!-- Sidebar -->
+  <aside class="w-[300px] bg-white shadow-lg hidden sm:hidden md:hidden lg:block" *ngIf="asideVisible">
+    <div class="p-4 flex items-center justify-between">
+      <div class="w-1/3">
+        <img src="WLorigin.svg" class="w-[60px]" alt="Logo WL" />
+      </div>
+      <div class="w-2/3 flex items-center justify-between px-[10px]">
+        <div>
+          <div>
+            <span
+              class="font-bold bg-gradient-to-r from-black via-[#17506B] to-[#066B9C] bg-clip-text text-transparent">Tuyên
+              Quang</span>
+          </div>
+          <div>
+            <span class="text-xs !py-0 text-gray-700">Nhà máy Thái Bình</span>
+          </div>
+        </div>
+        <div>
+          <span class="cursor-pointer text-[#17506B]" title="Đổi nhà máy" (click)="changeFactory()"><i
+              class="fa-solid fa-right-left"></i></span>
+        </div>
+      </div>
+    </div>
+    <p-divider />
+    <nav class="p-4 space-y-2" id="wl-sidebar">
+      <a href="#" class="block p-2 rounded hover:bg-gray-200" [ngClass]="i == 0 ? 'active' : ''"
+        *ngFor="let item of menuManagement; let i = index">
+        <i [class]="item.icon"></i>&nbsp; {{item.label}}
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col">
+    <!-- Navbar -->
+    <header class="bg-white shadow p-4 flex items-center justify-between w-full">
+      <button class="lg:hidden px-2 py-1 border rounded cursor-pointer" (click)="visible = !visible">☰</button>
+      <button class="sm:hidden hidden px-2 py-1 border rounded cursor-pointer md:hidden lg:block" (click)="setVisibleAside()">
+        <span *ngIf="asideVisible"><i class="fa-solid fa-angles-left"></i></span>
+        <span *ngIf="!asideVisible"><i class="fa-solid fa-angles-right"></i></span>
+
+      </button>
+      <h1 class="font-bold text-lg"></h1>
+      <div class="flex items-center space-x-4">
+        <span class="text-[#17506B] font-bold sm:hidden hidden md:block">Phạm Anh Tuấn</span>
+        <img src="WLorigin.svg" class="w-8 h-8 rounded-full cursor-pointer" alt="user" (click)="op.toggle($event)" />
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <p-drawer [(visible)]="visible" position="bottom" [modal]="true" [style]="{ height: '500px' }"
+    class="block sm:block md:hidden lg:hidden xl:hidden" closable="false">
+    <div class="flex flex-col px-[40px] h-full">
+      <div class="flex flex-col gap-4 mb-4">
+        <span class="font-bold text-[#17506B] text-2xl">Phạm Anh Tuấn</span>
+        <span>Woodsland Tuyên Quang - TB</span>
+      </div>
+      <p-divider class="" />
+      <div class="flex flex-col gap-4 user-popover">
+        <ul class="list-inside space-y-4">
+          <li class="cursor-pointer">
+            <a href=""><i class="fa-solid fa-address-card"></i>&nbsp; Trang cá nhân</a>
+          </li>
+          <li class="cursor-pointer" *ngFor="let item of menuManagement; let i = index">
+            <a href=""><i [class]="item.icon"></i>&nbsp; {{item.label}}</a>
+          </li>
+          <li class="cursor-pointer" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Đăng xuất
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="w-full wl-button font-bold cursor-pointer mt-auto bg-[#374151]"
+        (click)="visible = false">Đóng</button>
+    </div>
+  </p-drawer>
+
+  <p-popover #op>
+    <div class="flex flex-col gap-4 w-[120px] user-popover">
+      <ul class="list-inside space-y-4">
+        <li class="cursor-pointer">
+          <a href="">Trang cá nhân</a>
+        </li>
+        <li class="cursor-pointer" (click)="logout()">Đăng xuất</li>
+      </ul>
+    </div>
+  </p-popover>
+
+  <p-dialog id="modal-change-factory" header="Thay đổi nhà máy" [modal]="true" [(visible)]="modalFactoryVisible"
+    [style]="{ width: '25rem' }" closable="false" draggable="false" resizable="false">
+    <div>
+      <span>Chọn nhà máy cần chuyển:</span>
+    </div>
+    <div class="mt-4">
+      <ul>
+        <li>Thái Bình</li>
+        <li>Thuận Hưng</li>
+        <li>Yên Sơn</li>
+        <li>Chiêm Hóa</li>
+      </ul>
+    </div>
+    <div class="flex justify-between gap-2 mt-4">
+      <button type="button" class="w-[120px] wl-button font-bold cursor-pointer mt-auto"
+        (click)="modalFactoryVisible = false" style="background-color: #1f2937 !important;">Đóng</button>
+      <button type="button" class="w-[120px] wl-button font-bold cursor-pointer mt-auto bg-[#17506B]"
+        (click)="modalFactoryVisible = false">Thay đổi</button>
+    </div>
+  </p-dialog>
+</div>
