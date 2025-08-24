@@ -1,2 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+#login-page {
+    background-color: #e2e3eb;
+}
+
+.wl-button {
+    background: #17506B;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    height: 40px;;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.c-not-allowed {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.wl-input {
+    height: 43px;
+    border-radius: 6px;
+}
+
+.wl-input:focus {
+    border-color: unset;
+    box-shadow: none;
+}
+
+.form-control:focus{
+    border-color: unset;
+    box-shadow: none;
+}

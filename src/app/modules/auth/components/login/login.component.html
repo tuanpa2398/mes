@@ -1,0 +1,68 @@
+<div class="overflow-y-hidden overflow-x-hidden p-3 container-fluid min-vh-100" id="login-page">
+    <div class="d-flex fw-medium align-items-center text-center" [ngClass]="{
+            'text-success': networkStatus === NETWORK_STATUS.GOOD,
+            'text-danger': networkStatus === NETWORK_STATUS.SLOW,
+            'text-warning': networkStatus === NETWORK_STATUS.AVERAGE,
+            'text-secondary': networkStatus === NETWORK_STATUS.OFFLINE
+        }">
+        <div class="me-2">
+            <div *ngIf="networkStatus === NETWORK_STATUS.GOOD">
+                <app-good-network />
+            </div>
+            <div *ngIf="networkStatus === NETWORK_STATUS.AVERAGE">
+                <app-normal-network />
+            </div>
+            <div *ngIf="networkStatus === NETWORK_STATUS.SLOW">
+                <app-bad-network />
+            </div>
+            <div *ngIf="networkStatus === NETWORK_STATUS.OFFLINE">
+                <app-offline-network />
+            </div>
+        </div>
+        <div>
+            Kết nối: {{networkStatus}}
+        </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center row"
+        style="min-height: calc(100vh - 120px); ">
+        <div class="mb-5 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center align-items-center">
+            <img src="WLorigin.svg" alt="logo_wl" style="width: 100px;" />
+        </div>
+        <div class="rounded-3 p-4 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3" style="background: #FFF;">
+            <div class="">
+                <div class="" style="font-weight: 700; font-size: 1.875rem;">Đăng nhập.</div>
+                <div>Vui lòng đăng nhập để sử dụng.</div>
+            </div>
+
+            <div class="mt-4">
+                <form [formGroup]="form" (ngSubmit)="onSubmitLogin()">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label fw-bold">Email</label>
+                        <input type="text" formControlName="dataUser" class="form-control wl-input"
+                            id="exampleInputEmail1" placeholder="Nhập mã nhân viên hoặc email" />
+                        <div *ngIf="submited && form.get('dataUser')?.errors?.['required']" class="text-danger mt-1">
+                            Vui lòng nhập mã nhân viên hoặc email.
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="exampleInputPassword1" class="form-label fw-bold">Mật khẩu</label>
+                        <div class="input-group">
+                            <input type="password" formControlName="password" class="form-control wl-input"
+                                id="exampleInputPassword1" placeholder="••••••••" />
+                            <!-- <span class="input-group-text c-pointer" id="togglePassword" (click)="toggleShowPassword()">
+                                <i class="fa-solid fa-eye" *ngIf="!isShowPassword"></i>
+                                <i class="fa-solid fa-eye-slash" *ngIf="isShowPassword"></i>
+                            </span> -->
+                        </div>
+                        <div *ngIf="submited && form.get('password')?.errors?.['required']" class="text-danger mt-1">
+                            Vui lòng nhập mật khẩu.
+                        </div>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="w-100 wl-button fw-bold">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
