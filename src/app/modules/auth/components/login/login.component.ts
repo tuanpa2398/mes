@@ -85,6 +85,10 @@ export class LoginComponent implements OnInit {
     try {
       this.submited = true;
       // this.submited = false;
+      this.authService.login(this.form.value).subscribe(res => {
+        console.log(res);
+        
+      });
     } catch (error) {
       // this.submited = false;
     }
