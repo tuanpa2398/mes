@@ -39,8 +39,8 @@
                 <form [formGroup]="form" (ngSubmit)="onSubmitLogin()">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="font-bold">Email</label>
-                        <input type="text" formControlName="dataUser" class="wl-input" id="exampleInputEmail1" placeholder="Nhập mã nhân viên hoặc email" />
-                        <div *ngIf="submited && form.get('dataUser')?.errors?.['required']" class="text-red-500 mt-1">
+                        <input type="text" formControlName="pattern" class="wl-input" id="exampleInputEmail1" placeholder="Nhập mã nhân viên hoặc email" />
+                        <div *ngIf="submited && form.get('pattern')?.errors?.['required']" class="text-red-500 mt-1">
                             Vui lòng nhập mã nhân viên hoặc email.
                         </div>
                     </div>

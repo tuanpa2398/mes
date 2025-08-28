@@ -8,6 +8,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { httpInterceptor } from './core/interceptors/http.interceptor';
+import { MessageService } from 'primeng/api';
+import { responseHttpInterceptor } from './core/interceptors/response-http.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,7 +17,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
-        httpInterceptor
+        httpInterceptor,
+        responseHttpInterceptor
       ])
     ),
     provideAnimationsAsync(),
@@ -23,6 +26,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura
       }
-    })
+    }),
+    MessageService
   ]
 };

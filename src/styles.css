@@ -63,3 +63,21 @@
     color: #17506B;
     font-weight: bold;
 }
+
+#wl-app-toast .p-toast-message-error{
+    background-color: rgb(54, 54, 54);
+    border-color: rgb(54, 54, 54);
+}
+
+#wl-app-toast .p-toast-message-success{
+    background-color: rgb(54, 54, 54);
+    border-color: rgb(54, 54, 54);
+}
+
+#wl-app-toast .p-toast-summary{
+    display: none;
+}
+
+#wl-app-toast .p-toast-detail {
+    color: white;
+}

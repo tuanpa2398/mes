@@ -8,6 +8,9 @@ import { BadComponent as BadNetworkComponent } from '@app/shared/components/netw
 import { NETWORK_STATUS } from '@app/shared/constant';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
+import { catchError, of } from 'rxjs';
+import { ToastService } from '@app/services/toast.service';
+import { LoginResponse } from '@app/models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -30,14 +33,15 @@ export class LoginComponent implements OnInit {
   isShowPassword: boolean = false;
 
   form: FormGroup = new FormGroup({
-    dataUser: new FormControl('', [Validators.required]),
+    pattern: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
 
   submited: boolean = false;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit() {
@@ -74,23 +78,22 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  toggleShowPassword(){
+  toggleShowPassword() {
     this.isShowPassword = !this.isShowPassword;
   }
 
-  onSubmitLogin(){
+  onSubmitLogin() {
     console.log(this.form.value);
-    if(this.submited) return;
+    if (this.submited) return;
 
-    try {
-      this.submited = true;
-      // this.submited = false;
-      this.authService.login(this.form.value).subscribe(res => {
-        console.log(res);
-        
-      });
-    } catch (error) {
-      // this.submited = false;
-    }
+    this.submited = true;
+
+    this.authService.login({
+      pattern: this.form.value.pattern,
+      password: this.form.value.password
+    }).subscribe((res) => {
+      console.log(res);
+      this.submited = false;
+    });
   }
 }
