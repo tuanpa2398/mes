@@ -1,17 +1,15 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { ToastModule } from 'primeng/toast';
 import { AuthService } from './services/auth.service';
-import { CommonModule } from '@angular/common';
 import { ToastService } from './services/toast.service';
 import { LoadingBarService } from './services/loading-bar.service';
+import { SHARED_IMPORT_MODULE } from './shared/share.import';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    ToastModule,
-    CommonModule
+    SHARED_IMPORT_MODULE
   ],
   templateUrl: './app.component.html'
 })
@@ -34,8 +32,7 @@ export class AppComponent implements OnInit {
     let user = this.authService.getCurrentUser();
     let accessToken = this.authService.getAccessToken();
     this.loading = true;
-    let startTime = Date.now();
-    let url = this.router.url;    
+    let startTime = Date.now();    
 
     if (accessToken != null && user == null) {
       this.authService.getCurrentAppUser().subscribe({
@@ -47,7 +44,6 @@ export class AppComponent implements OnInit {
           }
           this.keepLoadingEffect(startTime)
           this.authService.storeUser(res);
-          this.router.navigate([url]);
         },
         error: err => {
           this.keepLoadingEffect(startTime)

@@ -1,7 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
-import { TabsModule } from 'primeng/tabs';
 
 import { CHUC_NANG_QUAN_LY_SAY_GO } from '@app/shared/constant';
 import { DryingPlanComponent } from '../drying-plan/drying-plan.component';
@@ -10,9 +7,10 @@ import { DryingIntoOvenComponent } from '../drying-into-oven/drying-into-oven.co
 import { OvenCheckingComponent } from '../oven-checking/oven-checking.component';
 import { OvenComponent } from '../oven/oven.component';
 import { DryingEvaluationComponent } from '../drying-evaluation/drying-evaluation.component';
-import { SelectModule } from 'primeng/select';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
+import { PageContentComponent } from '@app/shared/components/layouts/page-content/page-content/page-content.component';
+import {  SHARED_IMPORT_MODULE } from '@app/shared/share.import';
 
 type Tab = {
   tab: number
@@ -22,21 +20,21 @@ type Tab = {
 @Component({
   selector: 'app-wood-drying-management',
   imports: [
-    CommonModule,
-    TabsModule,
     DryingPlanComponent,
     DryingWoodComponent,
     DryingIntoOvenComponent,
     OvenCheckingComponent,
     OvenComponent,
     DryingEvaluationComponent,
-    SelectModule
+    PageContentComponent,
+    SHARED_IMPORT_MODULE
   ],
   templateUrl: './wood-drying-management.component.html'
 })
 export class WoodDryingManagementComponent implements OnInit {
-  chucNangQuanLySayGo = CHUC_NANG_QUAN_LY_SAY_GO;
-  tabIndex = 0;
+  chucNangQuanLySayGo: Tab[] = CHUC_NANG_QUAN_LY_SAY_GO;
+  selected: Tab = this.chucNangQuanLySayGo[0];
+  tabIndex: number = 0;
 
   constructor(
     private httpClient: HttpClient
@@ -47,6 +45,7 @@ export class WoodDryingManagementComponent implements OnInit {
     let tab = value.tab;
     if (tab != this.tabIndex) {
       this.tabIndex = value.tab;
+      this.selected = value;
     }
   }
 

@@ -44,6 +44,7 @@
     background-color: #17506B;
     color: white;
     font-weight: bold;
+    border-radius: 6px;
 }
 
 #wl-sidebar a.active {
@@ -55,6 +56,7 @@
     background-color: #17506B;
     color: white;
     font-weight: bold;
+    border-radius: 6px;
 }
 
 #modal-change-factory ul li {
@@ -200,4 +202,13 @@
     100% {
         transform: translateX(100%);
     }
+}
+
+.wl-card .p-card-title {
+    color: #17506B;
+    font-weight: bold;
+}
+
+#wl-sidebar .p-menu {
+    border: unset;
 }

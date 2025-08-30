@@ -1,4 +1,4 @@
-<div class="overflow-x-hidden p-4">
+<wl-page page-title="Quản lý sấy gỗ">
     <p-tabs [value]="tabIndex" class="wl-tabs">
         <div class="hidden sm:hidden md:block lg:block xl:block">
             <p-tablist>
@@ -6,19 +6,10 @@
             </p-tablist>
         </div>
         <div class="block sm:block md:hidden lg:hidden xl:hidden">
-            <p-select [options]="chucNangQuanLySayGo" optionLabel="title" [filter]="true" filterBy="title"
+            <p-select [options]="chucNangQuanLySayGo" optionLabel="title" filterBy="title"
                 [showClear]="false" placeholder="Chọn chức năng Quản lý sấy gỗ"
-                class="w-full wl-select border !border-[#FFFFFF] !border-b-[#ccc] !rounded-[0px] !h-[50px]" (onChange)="onChangeTab($event)">
-                <ng-template let-tab #item>
-                    <div class="flex items-center gap-2">
-                        <div>{{ tab.title }}</div>
-                    </div>
-                </ng-template>
-                <ng-template #selectedItem let-selectedOption>
-                    <div class="flex items-center gap-2">
-                        <div>{{ selectedOption.title }}</div>
-                    </div>
-                </ng-template>
+                class="w-full wl-select border !border-[#FFFFFF] !border-b-[#ccc] !rounded-[0px] !h-[50px]"
+                (onChange)="onChangeTab($event)" [(ngModel)]="selected">
             </p-select>
         </div>
 
@@ -43,4 +34,4 @@
             </p-tabpanel>
         </p-tabpanels>
     </p-tabs>
-</div>
+</wl-page>

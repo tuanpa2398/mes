@@ -70,7 +70,7 @@ export const PERMISSION_NAME = {
     XEP_SAY: "XEP_SAY",
     KE_HOACH_SAY: "KE_HOACH_SAY",
     VAO_LO: "VAO_LO",
-    KIEM_TRA_LO_SAY: "KIEM_TRA_LO_SAY", 
+    KIEM_TRA_LO_SAY: "KIEM_TRA_LO_SAY",
     LO_SAY: "LO_SAY",
     DANH_GIA_ME_SAY: "DANH_GIA_ME_SAY",
     SAN_LUONG_CHE_BIEN_GO: "SAN_LUONG_CHE_BIEN_GO",
@@ -351,3 +351,12 @@ export const NOT_FOUND_STATUS = 404;
 export const FORBIDDEN_STATUS = 403;
 export const SERVICE_UNAVAILABLE_STATUS = 503;
 export const SERVER_INTERNAL_ERROR_STATUS = 500;
+
+export const NAVBAR_MENU = [
+    { label: 'Trang chủ', icon: 'fa-solid fa-house', url: '' },
+    { label: 'Quản lý sấy gỗ', icon: 'fa-solid fa-industry', url: 'quan-ly-say-go' },
+    { label: 'Quản lý sản xuất', icon: 'fa-solid fa-industry', url: 'quan-ly-san-xuat' },
+    { label: 'Quản lý hàng hóa', icon: 'fa-solid fa-industry', url: 'quan-ly-hang-hoa' },
+    { label: 'Quản lý người dùng', icon: 'fa-solid fa-user', url: 'quan-ly-nguoi-dung' },
+    { label: 'Báo cáo', icon: 'fa-solid fa-file', url: 'bao-cao' },
+];

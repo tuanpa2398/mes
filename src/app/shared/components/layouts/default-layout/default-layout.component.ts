@@ -1,43 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 
 // Module imported
-import { DrawerModule } from 'primeng/drawer';
-import { ButtonModule } from 'primeng/button';
-import { PopoverModule } from 'primeng/popover';
-import { ListboxModule } from 'primeng/listbox';
-import { DividerModule } from 'primeng/divider';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { DialogModule } from 'primeng/dialog';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from '@app/services/auth.service';
+import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
+import { DefaultNavBarComponent } from './navbar/default-nav-bar/default-nav-bar.component';
+import { NAVBAR_MENU } from '@app/shared/constant';
 
 @Component({
   selector: 'app-default-layout',
   imports: [
-    CommonModule,
-    DrawerModule,
-    ButtonModule,
-    PopoverModule,
-    ListboxModule,
-    DividerModule,
-    DialogModule,
-    RouterOutlet
-],
+    RouterOutlet,
+    SHARED_IMPORT_MODULE,
+    DefaultNavBarComponent
+  ],
   templateUrl: './default-layout.component.html'
 })
-export class DefaultLayoutComponent implements OnInit{
+export class DefaultLayoutComponent implements OnInit {
   visible: boolean = false;
   asideVisible: boolean = true;
   modalFactoryVisible: boolean = false;
 
-  menuManagement = [
-    { label: 'Quản lý sấy gỗ', icon: 'fa-solid fa-industry' },
-    { label: 'Quản lý sản xuất', icon: 'fa-solid fa-industry' },
-    { label: 'Quản lý hàng hóa', icon: 'fa-solid fa-industry' },
-    { label: 'Quản lý người dùng', icon: 'fa-solid fa-user' },
-    { label: 'Báo cáo', icon: 'fa-solid fa-file' },
-  ];
+  menuManagement = NAVBAR_MENU;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void { }
 
@@ -46,7 +35,8 @@ export class DefaultLayoutComponent implements OnInit{
   }
 
   logout() {
-    console.log("logout");
+    this.authService.logout();
+    this.router.navigate([`/login`]);
   }
 
   changeFactory() {

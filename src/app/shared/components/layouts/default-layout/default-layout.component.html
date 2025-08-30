@@ -23,12 +23,7 @@
       </div>
     </div>
     <p-divider />
-    <nav class="p-4 space-y-2" id="wl-sidebar">
-      <a href="#" class="block p-2 rounded hover:bg-gray-200" [ngClass]="i == 0 ? 'active' : ''"
-        *ngFor="let item of menuManagement; let i = index">
-        <i [class]="item.icon"></i>&nbsp; {{item.label}}
-      </a>
-    </nav>
+    <app-default-nav-bar [items]="menuManagement" />
   </aside>
 
   <!-- Main Content -->
@@ -36,7 +31,8 @@
     <!-- Navbar -->
     <header class="bg-white shadow p-4 flex items-center justify-between w-full">
       <button class="lg:hidden px-2 py-1 border rounded cursor-pointer" (click)="visible = !visible">☰</button>
-      <button class="sm:hidden hidden px-2 py-1 border rounded cursor-pointer md:hidden lg:block" (click)="setVisibleAside()">
+      <button class="sm:hidden hidden px-2 py-1 border rounded cursor-pointer md:hidden lg:block"
+        (click)="setVisibleAside()">
         <span *ngIf="asideVisible"><i class="fa-solid fa-angles-left"></i></span>
         <span *ngIf="!asideVisible"><i class="fa-solid fa-angles-right"></i></span>
 
@@ -44,7 +40,8 @@
       <h1 class="font-bold text-lg"></h1>
       <div class="flex items-center space-x-4">
         <span class="text-[#17506B] font-bold sm:hidden hidden md:block">Phạm Anh Tuấn</span>
-        <img src="WLorigin.svg" class="w-8 h-8 rounded-full cursor-pointer" alt="user" (click)="op.toggle($event)" />
+        <p-avatar label="P" shape="circle" class="cursor-pointer" (click)="op.toggle($event)" />
+        <!-- <img src="WLorigin.svg" class="w-8 h-8 rounded-full cursor-pointer" alt="user" (click)="op.toggle($event)" /> -->
       </div>
     </header>
 
@@ -54,9 +51,9 @@
     </main>
   </div>
 
-  <p-drawer [(visible)]="visible" position="bottom" [modal]="true" [style]="{ height: '500px' }"
+  <p-drawer [(visible)]="visible" position="bottom" [modal]="true" [style]="{ height: '600px' }"
     class="block sm:block md:hidden lg:hidden xl:hidden" closable="false">
-    <div class="flex flex-col px-[40px] h-full">
+    <div class="flex flex-col px-[40px] h-full gap-y-3">
       <div class="flex flex-col gap-4 mb-4">
         <span class="font-bold text-[#17506B] text-2xl">Phạm Anh Tuấn</span>
         <span>Woodsland Tuyên Quang - TB</span>
@@ -68,14 +65,16 @@
             <a href=""><i class="fa-solid fa-address-card"></i>&nbsp; Trang cá nhân</a>
           </li>
           <li class="cursor-pointer" *ngFor="let item of menuManagement; let i = index">
-            <a href=""><i [class]="item.icon"></i>&nbsp; {{item.label}}</a>
+            <a routerLink="{{item.url}}"><i [class]="item.icon"></i>&nbsp; {{item.label}}</a>
           </li>
           <li class="cursor-pointer" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Đăng xuất
           </li>
         </ul>
       </div>
-      <button type="button" class="w-full wl-button font-bold cursor-pointer mt-auto bg-[#374151]"
-        (click)="visible = false">Đóng</button>
+      <div>
+        <button type="button" class="w-full wl-button font-bold cursor-pointer mt-auto bg-[#374151]"
+          (click)="visible = false">Đóng</button>
+      </div>
     </div>
   </p-drawer>
 

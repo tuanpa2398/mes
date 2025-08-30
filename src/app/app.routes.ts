@@ -4,6 +4,7 @@ import { DefaultLayoutComponent } from './shared/components/layouts/default-layo
 import { WoodDryingManagementComponent } from './modules/wood-drying-management/components/wood-drying-management/wood-drying-management.component';
 import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 import { ServerNotResponseComponent } from './modules/error/components/server-not-response/server-not-response.component';
+import { DashboardComponent } from './modules/dashboard/components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -13,8 +14,13 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                component: DashboardComponent
+            },
+            {
+                path: 'quan-ly-say-go',
                 component: WoodDryingManagementComponent,
-            }
+            },
+            
         ]
     },
     {

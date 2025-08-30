@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GoodComponent as GoodNetworkComponent } from '@app/shared/components/network/good/good.component';
 import { OfflineComponent as OfflineNetworkComponent } from '@app/shared/components/network/offline/offline.component';
@@ -6,16 +5,16 @@ import { NormalComponent as NormalNetworkComponent } from '@app/shared/component
 import { BadComponent as BadNetworkComponent } from '@app/shared/components/network/bad/bad.component';
 
 import { NETWORK_STATUS } from '@app/shared/constant';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
 import { ToastService } from '@app/services/toast.service';
 import { Router } from '@angular/router';
+import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
 
 @Component({
   selector: 'app-login',
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
+    SHARED_IMPORT_MODULE,
     GoodNetworkComponent,
     OfflineNetworkComponent,
     NormalNetworkComponent,
