@@ -36,14 +36,11 @@ type Tab = {
 })
 export class WoodDryingManagementComponent implements OnInit {
   chucNangQuanLySayGo = CHUC_NANG_QUAN_LY_SAY_GO;
-
   tabIndex = 0;
 
   constructor(
     private httpClient: HttpClient
-  ) {
-
-  }
+  ) {}
 
   onChangeTab(e: any) {
     let value: Tab = e.value;
