@@ -13,6 +13,13 @@
     height: 40px;
 }
 
+.wl-button-o {
+    color: white;
+    border: none;
+    border-radius: 6px;
+    height: 40px;
+}
+
 .wl-input {
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -21,6 +28,12 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.wl-input::placeholder {
+    color: #818388;
+    /* ví dụ màu xám */
+}
+
 .user-popover li:hover {
     color: #17506B;
     font-weight: bold;
@@ -50,7 +63,7 @@
     padding: 8px 12px;
     margin-bottom: 8px;
     cursor: pointer;
-    text-align: center ;
+    text-align: center;
 }
 
 #modal-change-factory ul li:hover {
@@ -64,20 +77,127 @@
     font-weight: bold;
 }
 
-#wl-app-toast .p-toast-message-error{
+.wl-tabs .p-tab:hover {
+    color: #17506B !important;
+    font-weight: bold;
+}
+
+#wl-app-toast .p-toast-message-error {
     background-color: rgb(54, 54, 54);
     border-color: rgb(54, 54, 54);
 }
 
-#wl-app-toast .p-toast-message-success{
+#wl-app-toast .p-toast-message-success {
     background-color: rgb(54, 54, 54);
     border-color: rgb(54, 54, 54);
 }
 
-#wl-app-toast .p-toast-summary{
+#wl-app-toast .p-toast-summary {
     display: none;
 }
 
 #wl-app-toast .p-toast-detail {
     color: white;
+}
+
+.wl-loader-container {
+    display: flex;
+    flex-direction: column;
+    /* xếp dọc */
+    align-items: center;
+    gap: 20px;
+    /* khoảng cách giữa ảnh và loader */
+}
+
+.wl-loader-logo {
+    width: 120px;
+    /* chỉnh kích thước ảnh */
+    height: auto;
+    object-fit: contain;
+}
+
+.wl-loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-gray-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.wl-app-loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #17506B;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.wl-fieldset .p-fieldset-legend-label {
+    color: #17506B !important;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.wl-select {
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    height: 40px !important;
+    padding: 0 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+}
+
+.wl-datepicker {
+    width: 100%;
+}
+
+.wl-datepicker .p-datepicker {
+    width: 100%;
+    border-radius: 6px !important;
+    height: 40px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+}
+
+.wl-datepicker .p-datepicker input {
+    border: 1px solid #ccc !important;
+}
+
+.wl-loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #17506B, #17506B);
+    animation: loading 2s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }

@@ -1,9 +1,28 @@
 <div class="overflow-x-hidden p-4">
     <p-tabs [value]="tabIndex" class="wl-tabs">
-        <p-tablist>
-            <p-tab [value]="item.tab" *ngFor="let item of chucNangQuanLySayGo">{{item.title}}</p-tab>
-        </p-tablist>
-        <p-tabpanels>
+        <div class="hidden sm:hidden md:block lg:block xl:block">
+            <p-tablist>
+                <p-tab [value]="item.tab" *ngFor="let item of chucNangQuanLySayGo">{{item.title}}</p-tab>
+            </p-tablist>
+        </div>
+        <div class="block sm:block md:hidden lg:hidden xl:hidden">
+            <p-select [options]="chucNangQuanLySayGo" optionLabel="title" [filter]="true" filterBy="title"
+                [showClear]="false" placeholder="Chọn chức năng Quản lý sấy gỗ"
+                class="w-full wl-select border !border-[#FFFFFF] !border-b-[#ccc] !rounded-[0px] !h-[50px]" (onChange)="onChangeTab($event)">
+                <ng-template let-tab #item>
+                    <div class="flex items-center gap-2">
+                        <div>{{ tab.title }}</div>
+                    </div>
+                </ng-template>
+                <ng-template #selectedItem let-selectedOption>
+                    <div class="flex items-center gap-2">
+                        <div>{{ selectedOption.title }}</div>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div>
+
+        <p-tabpanels class="bg-gray-100">
             <p-tabpanel [value]="0">
                 <app-drying-wood></app-drying-wood>
             </p-tabpanel>

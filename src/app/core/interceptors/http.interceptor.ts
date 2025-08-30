@@ -1,7 +1,10 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { inject } from '@angular/core';
+import { AuthService } from '@app/services/auth.service';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
   let apiReq = req;
 
   // nếu url không bắt đầu bằng http thì thêm prefix api
@@ -9,7 +12,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
     apiReq = apiReq.clone({ url: `${environment.apiUrl}${req.url}` });
   }
 
-  const token = localStorage.getItem('access_token');
+  const token = authService.getAccessToken();
 
   if (token) {
     apiReq = apiReq.clone({

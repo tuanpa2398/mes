@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api';
     providedIn: 'root'
 })
 export class ToastService {
-    duration: number = 3000000;
+    duration: number = 3000;
 
     severity = {
         success: 'success',
@@ -19,6 +19,15 @@ export class ToastService {
     constructor(
         private messageService: MessageService
     ) { }
+
+    info(message: string) {
+        this.messageService.add({ 
+            severity: this.severity.info, 
+            detail: message, life: this.duration,
+            closable: false,
+            closeIcon: ''
+        });
+    }
 
     error(message: string) {
         this.messageService.add({ 

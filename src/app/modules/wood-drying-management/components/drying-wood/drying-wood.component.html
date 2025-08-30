@@ -1,1 +1,110 @@
-<p>drying-wood works!</p>
+<div class="flex flex-col gap-y-4 min-h-[650px]">
+    <div class="flex justify-between">
+        <div class="flex items-center">
+            <span class="text-[#17506B] font-bold text-[22px]">Tạo pallet xếp sấy</span>
+        </div>
+        <div class="flex gap-x-2">
+            <button class="hidden sm:hidden md:block lg:block xl:block wl-button-o bg-gradient-to-r from-[#201527] to-[#350750] px-4 font-medium cursor-pointer">Xem
+                lịch sử</button>
+            <button
+                class="hidden sm:hidden md:block lg:block xl:block wl-button-o bg-gradient-to-r from-[#1e2737] to-[#072450] px-4 font-medium cursor-pointer">Truy
+                nguyên</button>
+        </div>
+    </div>
+
+    <div class="flex space-x-2 xl:hidden lg:hidden md:hidden">
+        <button class="wl-button-o bg-gradient-to-r from-[#201527] to-[#350750] px-4 font-medium cursor-pointer">Xem
+            lịch sử</button>
+        <button class="wl-button-o bg-gradient-to-r from-[#1e2737] to-[#072450] px-4 font-medium cursor-pointer">Truy
+            nguyên</button>
+    </div>
+
+    <div>
+        <p-panel header="Header" showHeader="false" class="">
+            <form class="flex flex-col gap-y-5">
+                <div class="pt-5 px-3">
+                    <div class="xl:grid md:grid xl:space-y-0 space-y-4 gap-5 mb-6 xl:grid-cols-3 md:grid-cols-3">
+                        <div class="gap-2">
+                            <label for="" class="font-medium">Loại gỗ <span class="text-red-500">*</span></label>
+                            <p-select [options]="[]" optionLabel="name" [filter]="true" filterBy="name"
+                                [showClear]="true" placeholder="Chọn loại gỗ" class="w-full wl-select">
+                                <ng-template let-country #item>
+                                    <div class="flex items-center gap-2">
+                                        <div>{{ country.name }}</div>
+                                    </div>
+                                </ng-template>
+                            </p-select>
+                        </div>
+                        <div class="gap-2">
+                            <label for="lotId" class="font-medium">Mã lô gỗ <span class="text-red-500">*</span></label>
+                            <input type="text" class="wl-input" id="lotId" placeholder="Nhập mã lô gỗ" />
+                        </div>
+                        <div class="gap-2">
+                            <label for="" class="font-medium">Mục đích sấy <span class="text-red-500">*</span></label>
+                            <p-select [options]="[]" optionLabel="name" [filter]="true" filterBy="name"
+                                [showClear]="true" placeholder="Chọn mục đích sấy" class="w-full wl-select">
+                                <ng-template let-country #item>
+                                    <div class="flex items-center gap-2">
+                                        <div>{{ country.name }}</div>
+                                    </div>
+                                </ng-template>
+                            </p-select>
+                        </div>
+                        <div class="gap-2 col-span-2">
+                            <label for="" class="font-medium">Quy cách thô <span class="text-red-500">*</span></label>
+                            <p-select [options]="[]" optionLabel="name" [filter]="true" filterBy="name"
+                                [showClear]="true" placeholder="Chọn quy cách" class="w-full wl-select">
+                                <ng-template let-country #item>
+                                    <div class="flex items-center gap-2">
+                                        <div>{{ country.name }}</div>
+                                    </div>
+                                </ng-template>
+                            </p-select>
+                        </div>
+                        <div class="gap-2 col-span-1">
+                            <label for="" class="font-medium">Ngày nhập gỗ <span class="text-red-500">*</span></label>
+                            <p-datepicker class="wl-datepicker" [showIcon]="true" inputId="buttondisplay"
+                                placeholder="Ngày nhập" />
+                        </div>
+                        <div class="gap-2 col-span-1">
+                            <label for="" class="font-medium">Thời gian thực hiện <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" class="wl-input" id="" placeholder="Nhập thời gian thực hiện" />
+                        </div>
+                        <div class="gap-2 col-span-2">
+                            <label for="" class="font-medium">Nhân viên xếp sấy <span
+                                    class="text-red-500">*</span></label>
+                            <p-select [options]="[]" optionLabel="name" [filter]="true" filterBy="name"
+                                [showClear]="true" placeholder="Chọn nhân viên xếp sấy" class="w-full wl-select">
+                                <ng-template let-country #item>
+                                    <div class="flex items-center gap-2">
+                                        <div>{{ country.name }}</div>
+                                    </div>
+                                </ng-template>
+                            </p-select>
+                        </div>
+                        <div class="gap-2 col-span-3">
+                            <div class="flex justify-end">
+                                <button class="wl-button px-4 font-medium cursor-pointer !bg-[#1f2937]">Thêm vào
+                                    Pallet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-4 px-3">
+                    <div class="text-center">
+                        <span class="text-gray-400">Danh sách hiện đang trống.</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-surface-500 dark:text-surface-400">Tổng: 0</span>
+                        </div>
+                        <div>
+                            <button class="wl-button px-4 font-medium cursor-pointer">Tạo Pallet</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-panel>
+    </div>
+</div>

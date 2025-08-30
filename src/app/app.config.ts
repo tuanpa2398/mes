@@ -10,6 +10,7 @@ import Aura from '@primeng/themes/aura';
 import { httpInterceptor } from './core/interceptors/http.interceptor';
 import { MessageService } from 'primeng/api';
 import { responseHttpInterceptor } from './core/interceptors/response-http.interceptor';
+import { loadingBarInterceptor } from './core/interceptors/LoadingBarInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([
         httpInterceptor,
-        responseHttpInterceptor
+        responseHttpInterceptor,
+        loadingBarInterceptor
       ])
     ),
     provideAnimationsAsync(),

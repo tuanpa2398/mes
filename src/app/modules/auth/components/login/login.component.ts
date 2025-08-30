@@ -1,4 +1,4 @@
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GoodComponent as GoodNetworkComponent } from '@app/shared/components/network/good/good.component';
 import { OfflineComponent as OfflineNetworkComponent } from '@app/shared/components/network/offline/offline.component';
@@ -8,9 +8,8 @@ import { BadComponent as BadNetworkComponent } from '@app/shared/components/netw
 import { NETWORK_STATUS } from '@app/shared/constant';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@app/services/auth.service';
-import { catchError, of } from 'rxjs';
 import { ToastService } from '@app/services/toast.service';
-import { LoginResponse } from '@app/models/auth.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +40,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -83,7 +83,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin() {
-    console.log(this.form.value);
     if (this.submited) return;
 
     this.submited = true;
@@ -91,9 +90,22 @@ export class LoginComponent implements OnInit {
     this.authService.login({
       pattern: this.form.value.pattern,
       password: this.form.value.password
-    }).subscribe((res) => {
-      console.log(res);
-      this.submited = false;
+    }).subscribe({
+      next: (res) => {
+        this.submited = false;
+
+        if (!res.status) {
+          this.toastService.error(res.message ?? "Đăng nhập không thành công.");
+          return
+        }
+
+        this.authService.store(res);
+        this.toastService.success(res.message ?? "Đăng nhập thành công.");
+        this.router.navigate([`/`]);
+      },
+      error: err => {
+        this.submited = false;
+      }
     });
   }
 }

@@ -15,23 +15,18 @@ export type AppUserAuth = {
     permissions: string[];
 }
 
-export type AuthLoginResponse = {
-    id: number;
-	username: string;
-	role: string;
-	first_name: string; 
-    last_name: string;
-    email: string; 
-    avatar: string;
-    plantL: string;
-    branch: string;
-}
-
 export type LoginResponse = {
     status: boolean;
     access_token: string;
     refresh_token: string;
-    user: AuthLoginResponse;
+    user: AppUserAuth;
+    message: string;
+}
+
+export type SystemUserResponse = {
+    status: boolean;
+    user: AppUserAuth;
+    message: string;
 }
 
 export type RefreshTokenResponse = {
