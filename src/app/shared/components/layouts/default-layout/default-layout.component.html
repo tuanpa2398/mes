@@ -57,17 +57,25 @@
       <div class="flex flex-col gap-4 mb-4">
         <span class="font-bold text-[#17506B] text-2xl">Phạm Anh Tuấn</span>
         <span>Woodsland Tuyên Quang - TB</span>
+        <ul class="list-inside space-y-4">
+          <li class="cursor-pointer hover:text-[#17506B] hover:font-bold" (click)="onNavigation('profile')">
+            <span><i class="fa-solid fa-address-card"></i>&nbsp; Trang cá nhân</span>
+          </li>
+          <li class="cursor-pointer hover:text-[#17506B] hover:font-bold" (click)="changeFactory()">
+            <span><i
+              class="fa-solid fa-right-left"></i>&nbsp; Đổi nhà máy</span>
+          </li>
+        </ul>
       </div>
       <p-divider class="" />
       <div class="flex flex-col gap-4 user-popover">
         <ul class="list-inside space-y-4">
-          <li class="cursor-pointer">
-            <a href=""><i class="fa-solid fa-address-card"></i>&nbsp; Trang cá nhân</a>
+          <li class="cursor-pointer" *ngFor="let item of menuManagement; let i = index"
+            (click)="onNavigation(item.url)">
+            <span><i [class]="item.icon"></i>&nbsp; {{item.label}}</span>
           </li>
-          <li class="cursor-pointer" *ngFor="let item of menuManagement; let i = index">
-            <a routerLink="{{item.url}}"><i [class]="item.icon"></i>&nbsp; {{item.label}}</a>
-          </li>
-          <li class="cursor-pointer" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Đăng xuất
+          <li class="cursor-pointer" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>&nbsp; Đăng xuất
           </li>
         </ul>
       </div>

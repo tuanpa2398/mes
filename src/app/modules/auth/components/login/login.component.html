@@ -55,7 +55,9 @@
                         </div>
                     </div>
                     <div class="">
-                        <button type="submit" class="w-100 wl-button font-bold cursor-pointer">Đăng nhập</button>
+                        <button type="submit" class="w-100 wl-button font-bold cursor-pointer" [disabled]="submited">
+                            {{ submited ? 'Đang đăng nhập...' : 'Đăng nhập' }}
+                        </button>
                     </div>
                 </form>
             </div>

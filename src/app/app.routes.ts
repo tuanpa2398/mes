@@ -5,6 +5,9 @@ import { WoodDryingManagementComponent } from './modules/wood-drying-management/
 import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 import { ServerNotResponseComponent } from './modules/error/components/server-not-response/server-not-response.component';
 import { DashboardComponent } from './modules/dashboard/components/dashboard/dashboard.component';
+import { CommonErrorComponent } from './modules/error/components/common/common-error/common-error.component';
+import { UnauthorizeComponent } from './modules/error/components/unauthorize/unauthorize.component';
+import { ForbiddenComponent } from './modules/error/components/forbidden/forbidden.component';
 
 export const routes: Routes = [
     {
@@ -31,5 +34,17 @@ export const routes: Routes = [
     {
         path: 'server-not-response',
         component: ServerNotResponseComponent
+    },
+    {
+        path: 'error',
+        component: CommonErrorComponent
+    },
+    {
+        path: 'unauthorize',
+        component: UnauthorizeComponent
+    },
+    {
+        path: 'forbidden',
+        component: ForbiddenComponent
     }
 ];

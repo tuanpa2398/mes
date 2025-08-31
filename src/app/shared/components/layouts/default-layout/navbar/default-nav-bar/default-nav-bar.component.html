@@ -1,5 +1,5 @@
 <nav class="p-4 space-y-2" id="wl-sidebar">
-    <a routerLink="{{item.url}}" class="block p-2 rounded hover:bg-gray-200" [ngClass]="i == 0 ? 'active' : ''"
+    <a routerLink="{{item.url}}" class="block p-2 rounded hover:bg-gray-200" [ngClass]="item.url == currentUrl ? 'active' : ''"
         *ngFor="let item of items; let i = index">
         <i [class]="item.icon"></i>&nbsp; {{item.label}}
     </a>

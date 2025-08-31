@@ -28,7 +28,7 @@ export class DefaultLayoutComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   setVisibleAside() {
     this.asideVisible = !this.asideVisible;
@@ -41,5 +41,10 @@ export class DefaultLayoutComponent implements OnInit {
 
   changeFactory() {
     this.modalFactoryVisible = true;
+  }
+
+  onNavigation(url: string = ''){
+    this.visible = false;
+    this.router.navigate([url])
   }
 }

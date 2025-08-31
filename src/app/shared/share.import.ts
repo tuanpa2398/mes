@@ -17,6 +17,7 @@ import { DatePickerModule } from "primeng/datepicker";
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import { AvatarModule } from 'primeng/avatar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 export const SHARED_IMPORT_MODULE = [
@@ -41,5 +42,6 @@ export const SHARED_IMPORT_MODULE = [
     DatePickerModule,
     PanelMenuModule,
     MenuModule,
-    AvatarModule
+    AvatarModule,
+    ProgressSpinnerModule
 ]
