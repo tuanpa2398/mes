@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
           return
         }
 
-        let user: AppUserAuth = res.data['user'];
+        let user: AppUserAuth = res.data['user'] as AppUserAuth;
 
         this.keepLoadingEffect(startTime);
 

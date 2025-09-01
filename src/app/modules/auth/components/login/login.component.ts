@@ -109,9 +109,9 @@ export class LoginComponent implements OnInit {
       let data: LoginResponse = {
         status: res.status,
         message: res.message,
-        access_token: res.data['access_token'],
-        refresh_token: res.data['refresh_token'],
-        user: res.data['user']
+        access_token: res.data['access_token'] as any,
+        refresh_token: res.data['refresh_token'] as any,
+        user: res.data['user'] as AppUserAuth
       }
 
       this.authService.store(data);

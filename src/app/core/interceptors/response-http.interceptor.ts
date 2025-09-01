@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@app/services/auth.service';
 import { ToastService } from '@app/services/toast.service';
 import { BAD_REQUEST_STATUS, FORBIDDEN_STATUS, NOT_FOUND_STATUS, SERVER_INTERNAL_ERROR_STATUS, SERVICE_UNAVAILABLE_STATUS, UNAUTHORIZED_STATUS } from '@app/shared/constant';
-import { EMPTY, catchError, finalize, switchMap } from 'rxjs';
+import { EMPTY, catchError, switchMap } from 'rxjs';
 
 export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
   const toastService = inject(ToastService);
@@ -13,6 +13,8 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
+      console.log("error", error);
+
       switch (error.status) {
         case 0:
           // Lỗi kết nối, ERR_CONNECTION_REFUSED thường có status = 0
@@ -43,10 +45,13 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
                 return EMPTY;
               })
             );
-          } else {
+          }else if (error.error?.error === "TOKEN_INVALID") {
             authService.logout();
             router.navigate([`/unauthorize`]);
             toastService.error("Từ chối truy cập. Vui lòng đăng nhập lại.");
+            return EMPTY;
+          }else {
+            toastService.error(error.error.message || "Từ chối truy cập. Vui lòng đăng nhập lại.");
             return EMPTY;
           }
         case FORBIDDEN_STATUS:
@@ -64,7 +69,7 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
           return EMPTY;
 
         case SERVER_INTERNAL_ERROR_STATUS:
-          toastService.error("Lỗi server. Vui lòng thử lại sau.");
+          toastService.error(error.error.message || "Lỗi server. Vui lòng thử lại sau.");
           return EMPTY;
 
         case NOT_FOUND_STATUS:
