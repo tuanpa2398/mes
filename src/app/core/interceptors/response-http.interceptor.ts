@@ -26,6 +26,7 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
 
         case UNAUTHORIZED_STATUS:
           if (error.error?.error === TOKEN_EXPIRED) {
+            console.log("TOKEN_EXPIRED");
             return authService.refreshToken().pipe(
               switchMap(res => {
                 return next(req.clone({
