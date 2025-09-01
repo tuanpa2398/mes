@@ -10,6 +10,8 @@ import { AuthService } from '@app/services/auth.service';
 import { ToastService } from '@app/services/toast.service';
 import { Router } from '@angular/router';
 import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
+import { AppUserAuth, LoginResponse } from '@app/models/auth.model';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -82,29 +84,40 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin() {
-    if (this.submited) return;
+    if(this.form.invalid) {
+      this.toastService.info("Vui lòng điền thông tin đăng nhập.");
+      return;
+    }
 
+    if (this.submited) return;
+    
     this.submited = true;
 
     this.authService.login({
       pattern: this.form.value.pattern,
       password: this.form.value.password
-    }).subscribe({
-      next: (res) => {
-        this.submited = false;
+    }).pipe(finalize(() => {
+      this.submited = false;
+    })).subscribe(res => {
+      this.submited = false;
 
-        if (!res.status) {
-          this.toastService.error(res.message ?? "Đăng nhập không thành công.");
-          return
-        }
-
-        this.authService.store(res);
-        this.toastService.success(res.message ?? "Đăng nhập thành công.");
-        this.router.navigate([`/`]);
-      },
-      error: err => {
-        this.submited = false;
+      if (!res.status) {
+        this.toastService.error(res.message ?? "Đăng nhập không thành công.");
+        return
       }
+
+      let data: LoginResponse = {
+        status: res.status,
+        message: res.message,
+        access_token: res.data['access_token'],
+        refresh_token: res.data['refresh_token'],
+        user: res.data['user']
+      }
+
+      this.authService.store(data);
+
+      this.toastService.success(res.message ?? "Đăng nhập thành công.");
+      this.router.navigate([`/`]);
     });
   }
 }

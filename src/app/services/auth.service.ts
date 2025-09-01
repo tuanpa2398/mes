@@ -12,14 +12,18 @@ export class AuthService {
   REFRESH_TOKEN: string = "refresh_token";
   ACCESS_TOKEN: string = "access_token";
 
-  constructor(private httpClient: HttpClient) { }
+  private prefixApi = `/auth`
+
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   login(data: LoginData){
-    return this.httpClient.post<ApiResponseData>('/auth/login', data);
+    return this.httpClient.post<ApiResponseData>(`${this.prefixApi}/login`, data);
   }
 
   refreshToken(){
-    return this.httpClient.post<ApiResponseData>('/auth/login/refresh-token', {
+    return this.httpClient.post<ApiResponseData>(`${this.prefixApi}/refresh-token`, {
       refreshToken: this.getRefreshToken()
     });
   }

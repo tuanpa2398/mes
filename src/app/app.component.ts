@@ -4,13 +4,15 @@ import { AuthService } from './services/auth.service';
 import { ToastService } from './services/toast.service';
 import { LoadingBarService } from './services/loading-bar.service';
 import { SHARED_IMPORT_MODULE } from './shared/share.import';
+import { AppUserAuth } from './models/auth.model';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     SHARED_IMPORT_MODULE
-  ],
+],
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
@@ -32,29 +34,33 @@ export class AppComponent implements OnInit {
     let user = this.authService.getCurrentUser();
     let accessToken = this.authService.getAccessToken();
     this.loading = true;
-    let startTime = Date.now();    
+    let startTime = Date.now();
 
     if (accessToken != null && user == null) {
-      this.authService.getCurrentAppUser().subscribe({
-        next: res => {
-          if (res.status == false) {
-            this.authService.logout();
-            this.toastService.info("Vui lòng đăng nhập lại.");
-            return
-          }
-          this.keepLoadingEffect(startTime)
-          this.authService.storeUser(res);
-        },
-        error: err => {
-          this.keepLoadingEffect(startTime)
-        },
-        complete: () => {
-          this.keepLoadingEffect(startTime)
+      this.authService.getCurrentAppUser()
+      .pipe(finalize(() => {
+        this.loading = false;
+      }))
+      .subscribe(res => {
+        if (res.status == false) {
+          this.authService.logout();
+          this.toastService.info("Vui lòng đăng nhập lại.");
+          return
         }
+
+        let user: AppUserAuth = res.data['user'];
+
+        this.keepLoadingEffect(startTime);
+
+        this.authService.storeUser({
+          message: res.message,
+          status: res.status,
+          user
+        });
       });
     }
 
-    if(accessToken == null && user == null){
+    if (accessToken == null && user == null) {
       this.keepLoadingEffect(startTime);
     }
   }

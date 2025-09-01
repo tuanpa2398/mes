@@ -8,6 +8,8 @@ import { DashboardComponent } from './modules/dashboard/components/dashboard/das
 import { CommonErrorComponent } from './modules/error/components/common/common-error/common-error.component';
 import { UnauthorizeComponent } from './modules/error/components/unauthorize/unauthorize.component';
 import { ForbiddenComponent } from './modules/error/components/forbidden/forbidden.component';
+import { NotFoundComponent } from './modules/error/components/404/not-found/not-found.component';
+import { ServerInternalErrorComponent } from './modules/error/components/server-internal-error/server-internal-error.component';
 
 export const routes: Routes = [
     {
@@ -46,5 +48,13 @@ export const routes: Routes = [
     {
         path: 'forbidden',
         component: ForbiddenComponent
+    },
+    {
+        path: '404',
+        component: NotFoundComponent
+    },
+    {
+        path: 'server-internal-error',
+        component: ServerInternalErrorComponent
     }
 ];
