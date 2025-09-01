@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppUserAuth, LoginData, LoginResponse, SystemUserResponse } from '@app/models/auth.model';
+import { ApiResponseData } from '@app/models/app.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,17 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   login(data: LoginData){
-    return this.httpClient.post<LoginResponse>('/auth/login', data);
+    return this.httpClient.post<ApiResponseData>('/auth/login', data);
   }
 
   refreshToken(){
-    return this.httpClient.post('/auth/login/refresh-token', {
+    return this.httpClient.post<ApiResponseData>('/auth/login/refresh-token', {
       refreshToken: this.getRefreshToken()
     });
   }
 
   getCurrentAppUser(){
-    return this.httpClient.get<SystemUserResponse>('/user/get-current-user');
+    return this.httpClient.get<ApiResponseData>('/user/get-current-user');
   }
 
   logout(){
