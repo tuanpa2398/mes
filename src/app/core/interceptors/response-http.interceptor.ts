@@ -11,6 +11,9 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
+  let TOKEN_INVALID = "TOKEN_INVALID";
+  let TOKEN_EXPIRED = "TOKEN_EXPIRED";
+
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       console.log("error", error);
@@ -22,33 +25,24 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
           return EMPTY;
 
         case UNAUTHORIZED_STATUS:
-          if (error.error?.error === 'TOKEN_EXPIRED') {
+          if (error.error?.error === TOKEN_EXPIRED) {
             return authService.refreshToken().pipe(
               switchMap(res => {
-                if (res.status == false) {
-                  authService.logout();
-                  router.navigate(['/login']);
-                  toastService.info("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.");
-                  return EMPTY;
-                }
-
-                let accessToken = res.data['access_token'];
-
                 return next(req.clone({
-                  setHeaders: { Authorization: `Bearer ${accessToken}` }
+                  setHeaders: { Authorization: `Bearer ${res.accessToken}` }
                 }));
               }),
               catchError(() => {
                 authService.logout();
                 router.navigate(['/login']);
-                toastService.info("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.");
+                toastService.info(error.error.message || "Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.");
                 return EMPTY;
               })
             );
-          }else if (error.error?.error === "TOKEN_INVALID") {
+          }else if (error.error?.error === TOKEN_INVALID) {
             authService.logout();
             router.navigate([`/unauthorize`]);
-            toastService.error("Từ chối truy cập. Vui lòng đăng nhập lại.");
+            toastService.error(error.error.message || "Từ chối truy cập. Vui lòng đăng nhập lại.");
             return EMPTY;
           }else {
             toastService.error(error.error.message || "Từ chối truy cập. Vui lòng đăng nhập lại.");

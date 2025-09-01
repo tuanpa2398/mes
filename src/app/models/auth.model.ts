@@ -3,7 +3,7 @@ export type LoginData = {
     password: string;
 }
 
-export type AppUserAuth = {
+export type AppCurrentUser = {
     id: number;
     first_name?: string | null;
     last_name?: string | null;
@@ -15,22 +15,13 @@ export type AppUserAuth = {
     permissions: string[];
 }
 
-export type LoginResponse = {
-    status: boolean;
-    access_token: string;
-    refresh_token: string;
-    user: AppUserAuth;
-    message: string;
+export type LoginDto = {
+    appCurrentUser: AppCurrentUser;
+    accessToken: string;
+    refreshToken: string;
 }
 
-export type SystemUserResponse = {
-    status: boolean;
-    user: AppUserAuth;
-    message: string;
-}
 
-export type RefreshTokenResponse = {
-    status: boolean;
-    access_token: string;
-    refresh_token: string;
+export type RefreshTokenResponseDto = {
+    accessToken: string;
 }

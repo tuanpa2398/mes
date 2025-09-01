@@ -4,7 +4,7 @@ import { AuthService } from './services/auth.service';
 import { ToastService } from './services/toast.service';
 import { LoadingBarService } from './services/loading-bar.service';
 import { SHARED_IMPORT_MODULE } from './shared/share.import';
-import { AppUserAuth } from './models/auth.model';
+import { AppCurrentUser } from './models/auth.model';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -42,21 +42,8 @@ export class AppComponent implements OnInit {
         this.loading = false;
       }))
       .subscribe(res => {
-        if (res.status == false) {
-          this.authService.logout();
-          this.toastService.info("Vui lòng đăng nhập lại.");
-          return
-        }
-
-        let user: AppUserAuth = res.data['user'] as AppUserAuth;
-
         this.keepLoadingEffect(startTime);
-
-        this.authService.storeUser({
-          message: res.message,
-          status: res.status,
-          user
-        });
+        this.authService.storeUser(res);
       });
     }
 

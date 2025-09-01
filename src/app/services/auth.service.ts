@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppUserAuth, LoginData, LoginResponse, SystemUserResponse } from '@app/models/auth.model';
+import { AppCurrentUser, LoginData, LoginDto, RefreshTokenResponseDto } from '@app/models/auth.model';
 import { ApiResponseData } from '@app/models/app.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user: AppUserAuth | null = null;
+  private user: AppCurrentUser | null = null;
   
   REFRESH_TOKEN: string = "refresh_token";
   ACCESS_TOKEN: string = "access_token";
@@ -19,17 +19,17 @@ export class AuthService {
   ) { }
 
   login(data: LoginData){
-    return this.httpClient.post<ApiResponseData>(`${this.prefixApi}/login`, data);
+    return this.httpClient.post<LoginDto>(`${this.prefixApi}/login`, data);
   }
 
   refreshToken(){
-    return this.httpClient.post<ApiResponseData>(`${this.prefixApi}/refresh-token`, {
+    return this.httpClient.post<RefreshTokenResponseDto>(`${this.prefixApi}/refresh-token`, {
       refreshToken: this.getRefreshToken()
     });
   }
 
   getCurrentAppUser(){
-    return this.httpClient.get<ApiResponseData>('/user/get-current-user');
+    return this.httpClient.get<AppCurrentUser>('/user/get-current-user');
   }
 
   logout(){
@@ -46,15 +46,15 @@ export class AuthService {
     localStorage.removeItem(this.ACCESS_TOKEN);
   }
 
-  store(data: LoginResponse){
-    localStorage.setItem(this.REFRESH_TOKEN, data.refresh_token);
-    localStorage.setItem(this.ACCESS_TOKEN, data.access_token);
+  store(data: LoginDto){
+    localStorage.setItem(this.REFRESH_TOKEN, data.refreshToken);
+    localStorage.setItem(this.ACCESS_TOKEN, data.accessToken);
 
-    this.user = data.user;
+    this.user = data.appCurrentUser;
   }
 
-  storeUser(data: SystemUserResponse){
-    this.user = data.user;
+  storeUser(u: AppCurrentUser){
+    this.user = u;
   }
 
   getAccessToken(){

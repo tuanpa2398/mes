@@ -10,7 +10,7 @@ import { AuthService } from '@app/services/auth.service';
 import { ToastService } from '@app/services/toast.service';
 import { Router } from '@angular/router';
 import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
-import { AppUserAuth, LoginResponse } from '@app/models/auth.model';
+import { AppCurrentUser, LoginDto } from '@app/models/auth.model';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -100,23 +100,8 @@ export class LoginComponent implements OnInit {
       this.submited = false;
     })).subscribe(res => {
       this.submited = false;
-
-      if (!res.status) {
-        this.toastService.error(res.message ?? "Đăng nhập không thành công.");
-        return
-      }
-
-      let data: LoginResponse = {
-        status: res.status,
-        message: res.message,
-        access_token: res.data['access_token'] as any,
-        refresh_token: res.data['refresh_token'] as any,
-        user: res.data['user'] as AppUserAuth
-      }
-
-      this.authService.store(data);
-
-      this.toastService.success(res.message ?? "Đăng nhập thành công.");
+      this.authService.store(res);
+      this.toastService.success("Đăng nhập thành công.");
       this.router.navigate([`/`]);
     });
   }
