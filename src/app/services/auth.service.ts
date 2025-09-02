@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppCurrentUser, LoginData, LoginDto, RefreshTokenResponseDto } from '@app/models/auth.model';
-import { ApiResponseData } from '@app/models/app.model';
 
 @Injectable({
   providedIn: 'root'

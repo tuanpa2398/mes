@@ -18,6 +18,11 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import { AvatarModule } from 'primeng/avatar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { TooltipModule } from 'primeng/tooltip';
+import { PaginatorModule } from 'primeng/paginator';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+
 
 
 export const SHARED_IMPORT_MODULE = [
@@ -43,5 +48,9 @@ export const SHARED_IMPORT_MODULE = [
     PanelMenuModule,
     MenuModule,
     AvatarModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ScrollTopModule,
+    TooltipModule,
+    PaginatorModule,
+    ToggleSwitchModule
 ]

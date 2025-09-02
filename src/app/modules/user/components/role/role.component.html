@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-y-4 min-h-[650px]">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center">
+            <span class="text-[#17506B] font-bold text-[22px]">Danh sách quyền</span>
+        </div>
+        <div class="flex gap-x-2">
+            <button
+                class="hidden sm:hidden md:block lg:block xl:block wl-button-o bg-gradient-to-r from-[#1e2737] to-[#072450] px-4 font-medium cursor-pointer">
+                <i class="fa-solid fa-plus"></i> Tạo mới
+            </button>
+        </div>
+        <div class="md:hidden">
+            <i class="fa-solid fa-ellipsis-vertical cursor-pointer text-[#17506B] text-[22px]" (click)="op.toggle($event)"></i>
+        </div>
+    </div>
+    <div class="grid">
+        search filter
+    </div>
+</div>
+
+<p-popover #op>
+    <div class="flex flex-col gap-4 w-[140px]">
+        <ul class="list-inside space-y-4">
+            <li class="cursor-pointer">
+                <a routerLink="/role/create"><i class="fa-solid fa-plus"></i> Tạo mới</a>
+            </li>
+        </ul>
+    </div>
+</p-popover>

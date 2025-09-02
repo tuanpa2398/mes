@@ -217,3 +217,8 @@
 #wl-sidebar .p-menu {
     border: unset;
 }
+
+.wl-paging .p-paginator-page-selected{
+    background: #17506B !important;
+    color: #FFFFFF !important;
+}
