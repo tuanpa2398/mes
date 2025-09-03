@@ -1,0 +1,273 @@
+<div
+    class="px-[15px] md:px-[15px] lg:px-[25px] xl:px-[25px] 2xl:px-28 pt-[10px] flex justify-between items-center xl:backdrop-blur-lg lg:backdrop-blur-lg md:backdrop-blur-lg">
+    <!-- Logo và Nhà máy -->
+    <div class="block sm:block md:hidden lg:block">
+        <div class="flex items-center gap-x-5">
+            <div class="block sm:block md:hidden lg:block">
+                <img src="WLorigin.svg" class="w-[56px] h-[56px]" alt="Logo WL" />
+            </div>
+            <div class="flex items-center justify-between gap-x-5">
+                <div class="block sm:block md:hidden lg:block">
+                    <div>
+                        <span
+                            class="text-[16px] font-bold bg-gradient-to-r from-black via-[#17506B] to-[#066B9C] bg-clip-text text-transparent">
+                            TUYÊN QUANG
+                        </span>
+                    </div>
+                    <div>
+                        <span class="text-xs !py-0 text-gray-700 font-bold cursor-pointer hover:underline"
+                            (click)="modalFactoryVisible = true" pTooltip="Thay đổi nhà máy" tooltipPosition="bottom">
+                            Nhà máy Thái Bình
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Các chức năng chính -->
+    <div class="bg-[#FFFFFF] rounded-xl px-3 hidden sm:hidden md:block lg:block xl:block py-2" id="main-fn">
+        <div class="gap-x-2 flex">
+            <div class="flex items-center p-2 px-3 space-x-2 font-medium cursor-pointer text-gray-700 rounded-xl"
+                [ngClass]="currentUrl == '' ? 'main-fn-active' : 'main-fn-items'">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 4h6v6h-6z"></path>
+                    <path d="M14 4h6v6h-6z"></path>
+                    <path d="M4 14h6v6h-6z"></path>
+                    <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                </svg>
+                <p class="font-bold">Quản lý sản xuất</p>
+            </div>
+            <div class="flex items-center p-2 px-3 space-x-2 font-medium cursor-pointer text-gray-700 rounded-xl"
+                [ngClass]="currentUrl == 'quan-ly-nguoi-dung' ? 'main-fn-active' : 'main-fn-items'">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z"></path>
+                    <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+                    <path d="M6 20.05v-.05a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v.05"></path>
+                </svg>
+                <p class="font-bold">Quản lý người dùng</p>
+            </div>
+            <div class="flex items-center p-2 px-3 space-x-2 font-medium cursor-pointer text-gray-700 rounded-xl"
+                [ngClass]="currentUrl == 'bao-cao' ? 'main-fn-active' : 'main-fn-items'">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                    </path>
+                    <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z">
+                    </path>
+                    <path d="M9 17v-5"></path>
+                    <path d="M12 17v-1"></path>
+                    <path d="M15 17v-3"></path>
+                </svg>
+                <p class="font-bold">Báo cáo</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thông tin người dùng đang đăng nhập -->
+    <div>
+        <div class="flex items-center h-[55px] justify-end">
+            <!-- view mobile or tablet -->
+            <div class="block sm:block md:hidden lg:hidden xl:hidden">
+                <div class="flex gap-x-3">
+                    <div class="text-sm mx-2 mr-1 flex gap-x-2 font-medium items-center"
+                        pTooltip="Tính hiệu mạng: {{networkStatus}}" tooltipPosition="left">
+                        <svg class="w-[22px] h-[22px]" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                            fill="none">
+                            <path
+                                d="m 8 1.992188 c -2.617188 0 -5.238281 0.933593 -7.195312 2.808593 l -0.496094 0.480469 c -0.3984378 0.378906 -0.410156 1.011719 -0.03125 1.410156 c 0.382812 0.398438 1.015625 0.410156 1.414062 0.03125 l 0.5 -0.476562 c 3.085938 -2.957032 8.53125 -2.957032 11.617188 0 l 0.5 0.476562 c 0.398437 0.378906 1.03125 0.367188 1.414062 -0.03125 c 0.378906 -0.398437 0.367188 -1.03125 -0.03125 -1.410156 l -0.496094 -0.484375 c -1.957031 -1.871094 -4.578124 -2.804687 -7.195312 -2.804687 z m -0.03125 4.007812 c -1.570312 0.011719 -3.128906 0.628906 -4.207031 1.8125 l -0.5 0.550781 c -0.179688 0.195313 -0.277344 0.453125 -0.261719 0.71875 c 0.011719 0.265625 0.128906 0.515625 0.328125 0.695313 c 0.195313 0.179687 0.453125 0.273437 0.71875 0.257812 c 0.265625 -0.011718 0.515625 -0.128906 0.695313 -0.328125 l 0.496093 -0.546875 c 1.277344 -1.402344 4.160157 -1.496094 5.523438 0.003906 l 0.5 0.542969 c 0.175781 0.199219 0.425781 0.316407 0.691406 0.328125 c 0.265625 0.015625 0.523437 -0.078125 0.722656 -0.257812 c 0.195313 -0.179688 0.3125 -0.429688 0.324219 -0.695313 c 0.011719 -0.261719 -0.082031 -0.523437 -0.261719 -0.71875 l -0.5 -0.546875 c -1.121093 -1.234375 -2.703125 -1.828125 -4.269531 -1.816406 z m 0.03125 4 c -0.511719 0 -1.023438 0.195312 -1.414062 0.585938 c -0.78125 0.78125 -0.78125 2.046874 0 2.828124 s 2.046874 0.78125 2.828124 0 s 0.78125 -2.046874 0 -2.828124 c -0.390624 -0.390626 -0.902343 -0.585938 -1.414062 -0.585938 z m 0 0"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </div>
+                    <button type="button" class="w-fit cursor-pointer" (click)="visibleMainMenu = true">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                            aria-hidden="true" class="text-2xl" focusable="false" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                clip-rule="evenodd">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- view desktop -->
+            <div class="hidden sm:hidden md:block lg:block xl:block gap-x-3">
+                <div class="flex">
+                    <div class="text-sm flex gap-x-2 font-medium items-center p-2 px-[9px] rounded-xl"
+                        pTooltip="Tính hiệu mạng: {{networkStatus}}" tooltipPosition="bottom">
+                        <svg class="w-[21px] h-[21px]" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                            fill="none">
+                            <path
+                                d="m 8 1.992188 c -2.617188 0 -5.238281 0.933593 -7.195312 2.808593 l -0.496094 0.480469 c -0.3984378 0.378906 -0.410156 1.011719 -0.03125 1.410156 c 0.382812 0.398438 1.015625 0.410156 1.414062 0.03125 l 0.5 -0.476562 c 3.085938 -2.957032 8.53125 -2.957032 11.617188 0 l 0.5 0.476562 c 0.398437 0.378906 1.03125 0.367188 1.414062 -0.03125 c 0.378906 -0.398437 0.367188 -1.03125 -0.03125 -1.410156 l -0.496094 -0.484375 c -1.957031 -1.871094 -4.578124 -2.804687 -7.195312 -2.804687 z m -0.03125 4.007812 c -1.570312 0.011719 -3.128906 0.628906 -4.207031 1.8125 l -0.5 0.550781 c -0.179688 0.195313 -0.277344 0.453125 -0.261719 0.71875 c 0.011719 0.265625 0.128906 0.515625 0.328125 0.695313 c 0.195313 0.179687 0.453125 0.273437 0.71875 0.257812 c 0.265625 -0.011718 0.515625 -0.128906 0.695313 -0.328125 l 0.496093 -0.546875 c 1.277344 -1.402344 4.160157 -1.496094 5.523438 0.003906 l 0.5 0.542969 c 0.175781 0.199219 0.425781 0.316407 0.691406 0.328125 c 0.265625 0.015625 0.523437 -0.078125 0.722656 -0.257812 c 0.195313 -0.179688 0.3125 -0.429688 0.324219 -0.695313 c 0.011719 -0.261719 -0.082031 -0.523437 -0.261719 -0.71875 l -0.5 -0.546875 c -1.121093 -1.234375 -2.703125 -1.828125 -4.269531 -1.816406 z m 0.03125 4 c -0.511719 0 -1.023438 0.195312 -1.414062 0.585938 c -0.78125 0.78125 -0.78125 2.046874 0 2.828124 s 2.046874 0.78125 2.828124 0 s 0.78125 -2.046874 0 -2.828124 c -0.390624 -0.390626 -0.902343 -0.585938 -1.414062 -0.585938 z m 0 0"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </div>
+                    <button type="button" (click)="op.toggle($event)">
+                        <span>
+                            <button type="button" class="cursor-pointer">
+                                <div
+                                    class="flex items-center space-x-4 bg-[#FFFFFF] p-1 px-3.5 pl-1 rounded-xl font-medium">
+                                    <div class="relative rounded-full border-white border-2 w-fit h-fit">
+                                        <img src="data:image/png;base64,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"
+                                            alt="user" class="w-8 h-8 rounded-full" />
+                                        <div class="absolute -bottom-1 -right-2 rounded-full bg-white w-fit h-fit">
+                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="w-5 h-5 text-[black]" height="1em" width="1em"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -20 0c0 -5.523 4.477 -10 10 -10zm2 5a3 3 0 0 0 -2.98 2.65l-.015 .174l-.005 .176l.005 .176c.019 .319 .087 .624 .197 .908l.09 .209l-3.5 3.5l-.082 .094a1 1 0 0 0 0 1.226l.083 .094l1.5 1.5l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l.083 -.094a1 1 0 0 0 0 -1.226l-.083 -.094l-.792 -.793l.585 -.585l.793 .792l.094 .083a1 1 0 0 0 1.403 -1.403l-.083 -.094l-.792 -.793l.792 -.792a3 3 0 1 0 1.293 -5.708zm0 2a1 1 0 1 1 0 2a1 1 0 0 1 0 -2z"
+                                                    stroke-width="0" fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-0">
+                                        <div class="text-[15px] font-semibold text-left">IT Admin</div>
+                                        <div class="text-xs font-regular text-right text-gray-500">admin!gmail.com</div>
+                                    </div>
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                        class="text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M18.2073 9.04304 12.0002 2.83594 5.79312 9.04304 7.20733 10.4573 12.0002 5.66436 16.7931 10.4573 18.2073 9.04304ZM5.79297 14.9574 12.0001 21.1646 18.2072 14.9574 16.793 13.5432 12.0001 18.3361 7.20718 13.5432 5.79297 14.9574Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal thay đổi nhà máy -->
+<p-dialog id="modal-change-factory" header="Thay đổi nhà máy" [modal]="true" [(visible)]="modalFactoryVisible"
+    [style]="{ width: '25rem' }" closable="false" draggable="false" resizable="false">
+    <div>
+        <span>Chọn nhà máy cần chuyển:</span>
+    </div>
+    <div class="mt-4">
+        <ul>
+            <li>Thái Bình</li>
+            <li>Thuận Hưng</li>
+            <li>Yên Sơn</li>
+            <li>Chiêm Hóa</li>
+        </ul>
+    </div>
+    <div class="flex justify-between gap-2 mt-4">
+        <button type="button" class="w-[120px] wl-button font-bold cursor-pointer mt-auto"
+            (click)="modalFactoryVisible = false" style="background-color: #1f2937 !important;">Đóng</button>
+        <button type="button" class="w-[120px] wl-button font-bold cursor-pointer mt-auto bg-[#17506B]"
+            (click)="modalFactoryVisible = false">Thay đổi</button>
+    </div>
+</p-dialog>
+
+<p-popover #op>
+    <div class="w-[150px]">
+        <div class="font-bold hover:bg-[#17506B] cursor-pointer p-2 text-center hover:text-[#FFFFFF] rounded-xl">Trang
+            cá nhân</div>
+        <div class="font-bold hover:bg-[#17506B] cursor-pointer p-2 text-center hover:text-[#FFFFFF] rounded-xl">Đăng
+            xuất</div>
+    </div>
+</p-popover>
+
+<p-drawer [(visible)]="visibleMainMenu" [position]="'bottom'" closable="false" [modal]="true"
+    [style]="{ minHeight: '450px', background: '#1a202c', color: '#FFFFFF', padding: '0px 20px' }">
+    <div class="flex flex-col gap-y-2 px-3">
+        <div class="">
+            <strong class="text-[22px]">ADMIN IT</strong>
+        </div>
+        <div class="">
+            <strong class="text-[15px]">Woodsland Tuyên Quang - TB</strong>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="flex flex-col justify-between">
+        <div class="flex flex-col gap-y-4 px-5">
+            <div class="flex items-center">
+                <a routerLink="profile" class="flex text-[18px] font-bold gap-x-4">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z"></path>
+                        <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+                        <path d="M6 20.05v-.05a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v.05"></path>
+                    </svg> Trang cá nhân
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a routerLink="workspace" class="flex text-[18px] font-bold gap-x-4">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M4 4h6v6h-6z"></path>
+                        <path d="M14 4h6v6h-6z"></path>
+                        <path d="M4 14h6v6h-6z"></path>
+                        <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                    </svg> Workspace
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a routerLink="quan-ly-nguoi-dung" class="flex text-[18px] font-bold gap-x-4">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z"></path>
+                        <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+                        <path d="M6 20.05v-.05a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v.05"></path>
+                    </svg> Quản lý người dùng
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a routerLink="bao-cao" class="flex text-[18px] font-bold gap-x-4">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                        </path>
+                        <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z">
+                        </path>
+                        <path d="M9 17v-5"></path>
+                        <path d="M12 17v-1"></path>
+                        <path d="M15 17v-3"></path>
+                    </svg> Báo cáo
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a routerLink="bao-cao" class="flex text-[18px] font-bold gap-x-4">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" class="text-2xl" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 12l14 0"></path>
+                        <path d="M13 18l6 -6"></path>
+                        <path d="M13 6l6 6"></path>
+                    </svg>
+                    Đăng xuất
+                </a>
+            </div>
+            <div class="flex items-center justify-center">
+                <button class="bg-gray-700 w-full py-2 rounded-xl cursor-pointer" (click)="visibleMainMenu = false">Đóng</button>
+            </div>
+        </div>
+    </div>
+</p-drawer>

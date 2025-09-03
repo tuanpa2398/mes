@@ -11,25 +11,26 @@ import { ForbiddenComponent } from './modules/error/components/forbidden/forbidd
 import { NotFoundComponent } from './modules/error/components/404/not-found/not-found.component';
 import { ServerInternalErrorComponent } from './modules/error/components/server-internal-error/server-internal-error.component';
 import { UserComponent } from './modules/user/components/user/user.component';
+import { AppLayoutComponent } from './shared/components/layouts/app-layout/app-layout.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: DefaultLayoutComponent,
+        component: AppLayoutComponent,
         canActivate: [authGuard],
         children: [
-            {
-                path: '',
-                component: DashboardComponent
-            },
-            {
-                path: 'quan-ly-say-go',
-                component: WoodDryingManagementComponent,
-            },
-            {
-                path: 'quan-ly-nguoi-dung',
-                component: UserComponent,
-            }
+            // {
+            //     path: '',
+            //     component: DashboardComponent
+            // },
+            // {
+            //     path: 'quan-ly-say-go',
+            //     component: WoodDryingManagementComponent,
+            // },
+            // {
+            //     path: 'quan-ly-nguoi-dung',
+            //     component: UserComponent,
+            // }
             
         ]
     },

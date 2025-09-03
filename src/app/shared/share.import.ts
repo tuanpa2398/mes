@@ -22,6 +22,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { TooltipModule } from 'primeng/tooltip';
 import { PaginatorModule } from 'primeng/paginator';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -52,5 +54,7 @@ export const SHARED_IMPORT_MODULE = [
     ScrollTopModule,
     TooltipModule,
     PaginatorModule,
-    ToggleSwitchModule
+    ToggleSwitchModule,
+    FloatLabelModule,
+    CheckboxModule
 ]

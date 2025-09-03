@@ -6,7 +6,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import lara from '@primeng/themes/lara';
 import { httpInterceptor } from './core/interceptors/http.interceptor';
 import { MessageService } from 'primeng/api';
 import { responseHttpInterceptor } from './core/interceptors/response-http.interceptor';
@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: lara
       }
     }),
     MessageService

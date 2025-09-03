@@ -1,0 +1,195 @@
+<div class="h-screen w-screen bg-gray-200 overflow-x-hidden">
+    <!-- Header -->
+    <div class="app-header sticky top-0 z-50">
+        <app-header />
+    </div>
+
+    <div class="overflow-y-auto overflow-x-hidden px-28 py-10">
+        <!-- main content -->
+        <div class="flex flex-col gap-y-10">
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-y-3">
+                <div class="w-full font-bold text-xl">
+                    {{getCurrentDateTime()}}
+                </div>
+                <div class="w-full text-[24px]">
+                    Xin chào, <span class="font-bold">{{getCurrentUser()}}</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-x-10">
+                <div>
+                    <button class="bg-[#FFFFFF] px-5 py-3 rounded-xl text-gray-700 font-bold cursor-pointer">Quản lý sấy
+                        gỗ</button>
+                </div>
+                <div>
+                    <button class="bg-[#FFFFFF] px-5 py-3 rounded-xl text-gray-700 font-bold cursor-pointer">Quản lý sản
+                        xuất</button>
+                </div>
+                <div>
+                    <button class="bg-[#FFFFFF] px-5 py-3 rounded-xl text-gray-700 font-bold cursor-pointer">Quản lý
+                        hàng
+                        hóa</button>
+                </div>
+            </div>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-3 gap-x-10 px-[100px] gap-y-10">
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Xếp sấy</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Tạo và xếp pallet để chuẩn bị
+                                        cho vào lò.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z">
+                                    </path>
+                                    <path
+                                        d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z">
+                                    </path>
+                                    <path
+                                        d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Tạo kế hoạch sấy</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Tạo kế hoạch sấy trên danh sách
+                                        lò hiện có.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M7.502 6h7.128A3.375 3.375 0 0118 9.375v9.375a3 3 0 003-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 00-.673-.05A3 3 0 0015 1.5h-1.5a3 3 0 00-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6zM13.5 3A1.5 1.5 0 0012 4.5h4.5A1.5 1.5 0 0015 3h-1.5z"
+                                        clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                        d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V9.375zM6 12a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V12zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 15a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V15zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM6 18a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H6.75a.75.75 0 01-.75-.75V18zm2.25 0a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Vào lò</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Cho pallet đã tạo vào lò để
+                                        chuẩn bị sấy.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.566 4.657A4.505 4.505 0 016.75 4.5h10.5c.41 0 .806.055 1.183.157A3 3 0 0015.75 3h-7.5a3 3 0 00-2.684 1.657zM2.25 12a3 3 0 013-3h13.5a3 3 0 013 3v6a3 3 0 01-3 3H5.25a3 3 0 01-3-3v-6zM5.25 7.5c-.41 0-.806.055-1.184.157A3 3 0 016.75 6h10.5a3 3 0 012.683 1.657A4.505 4.505 0 0018.75 7.5H5.25z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Kiểm tra lò sấy</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Kiểm tra lò sấy dựa trên các
+                                        tiêu chuẩn hoạt động.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path>
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Lò sấy</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Tiến hành khởi động quá trình
+                                        sấy gỗ.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19.006 3.705a.75.75 0 00-.512-1.41L6 6.838V3a.75.75 0 00-.75-.75h-1.5A.75.75 0 003 3v4.93l-1.006.365a.75.75 0 00.512 1.41l16.5-6z">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M3.019 11.115L18 5.667V9.09l4.006 1.456a.75.75 0 11-.512 1.41l-.494-.18v8.475h.75a.75.75 0 010 1.5H2.25a.75.75 0 010-1.5H3v-9.129l.019-.006zM18 20.25v-9.565l1.5.545v9.02H18zm-9-6a.75.75 0 00-.75.75v4.5c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75H9z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+                <div>
+                    <p-card [style]="{cursor:'pointer', padding: '10px 5px'}"
+                        styleClass="hover:shadow-md transition-all duration-500 xl:hover:scale-105 h-[160px]">
+                        <div class="flex gap-x-10 justify-between">
+                            <div class="flex flex-col gap-y-3">
+                                <div>
+                                    <span class="font-bold text-[22px]">Đánh giá mẻ sấy</span>
+                                </div>
+                                <div>
+                                    <span class="text-[15px] font-normal text-gray-500">Đánh giá mẻ gỗ sau khi sấy và kết thúc quy trình.</span>
+                                </div>
+                            </div>
+                            <div class="text-3xl h-fit rounded-full m-1 p-3 bg-[#DAEAF1] text-[#17506b]">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                    aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.493 18.75c-.425 0-.82-.236-.975-.632A7.48 7.48 0 016 15.375c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75 2.25 2.25 0 012.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23h-.777zM2.331 10.977a11.969 11.969 0 00-.831 4.398 12 12 0 00.52 3.507c.26.85 1.084 1.368 1.973 1.368H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 01-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </p-card>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

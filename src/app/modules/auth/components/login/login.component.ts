@@ -10,7 +10,6 @@ import { AuthService } from '@app/services/auth.service';
 import { ToastService } from '@app/services/toast.service';
 import { Router } from '@angular/router';
 import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
-import { AppCurrentUser, LoginDto } from '@app/models/auth.model';
 import { finalize } from 'rxjs';
 
 @Component({

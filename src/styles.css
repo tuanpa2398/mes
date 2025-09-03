@@ -218,7 +218,25 @@
     border: unset;
 }
 
-.wl-paging .p-paginator-page-selected{
+.wl-paging .p-paginator-page-selected {
     background: #17506B !important;
     color: #FFFFFF !important;
+}
+
+
+#main-fn .main-fn-active{
+    background: #17506B;
+    scale: .98;
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+    color: #FFFFFF;
+}
+
+#main-fn .main-fn-active:hover{
+    background: #17506B;
+}
+
+#main-fn .main-fn-items:hover {
+    background-color: var(--color-gray-300);
+    cursor: pointer;
 }
