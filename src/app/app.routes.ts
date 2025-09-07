@@ -31,7 +31,6 @@ export const routes: Routes = [
             //     path: 'quan-ly-nguoi-dung',
             //     component: UserComponent,
             // }
-            
         ]
     },
     {

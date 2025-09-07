@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@app/services/auth.service';
-import { PageContentComponent } from '@app/shared/components/layouts/page-content/page-content/page-content.component';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
-    PageContentComponent
   ],
   templateUrl: './dashboard.component.html'
 })

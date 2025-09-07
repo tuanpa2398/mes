@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PageContentComponent } from '@app/shared/components/layouts/page-content/page-content/page-content.component';
 import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
 import { UserListComponent } from './user-list/user-list.component';
 import { ActivatedRoute } from '@angular/router';
@@ -7,9 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user',
   imports: [
-    SHARED_IMPORT_MODULE,
-    PageContentComponent,
-    UserListComponent
+    SHARED_IMPORT_MODULE
   ],
   templateUrl: './user.component.html'
 })

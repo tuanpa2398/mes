@@ -9,7 +9,6 @@ import { OvenComponent } from '../oven/oven.component';
 import { DryingEvaluationComponent } from '../drying-evaluation/drying-evaluation.component';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-import { PageContentComponent } from '@app/shared/components/layouts/page-content/page-content/page-content.component';
 import {  SHARED_IMPORT_MODULE } from '@app/shared/share.import';
 
 type Tab = {
@@ -20,13 +19,6 @@ type Tab = {
 @Component({
   selector: 'app-wood-drying-management',
   imports: [
-    DryingPlanComponent,
-    DryingWoodComponent,
-    DryingIntoOvenComponent,
-    OvenCheckingComponent,
-    OvenComponent,
-    DryingEvaluationComponent,
-    PageContentComponent,
     SHARED_IMPORT_MODULE
   ],
   templateUrl: './wood-drying-management.component.html'
