@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NETWORK_STATUS } from '@app/shared/constant';
 import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
-import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,33 +11,20 @@ import { filter, Subscription } from 'rxjs';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  modalFactoryVisible: boolean = false;
-  visibleMainMenu: boolean = false;
+  @Input("appState") appState: any = {};
+  @Input("toggleSideBar") toggleSideBar: any = () => { }
 
   // network status
   networkStatus: string = 'Đang kiểm tra...';
   downlink: number = 0;
   NETWORK_STATUS = NETWORK_STATUS;
 
-  // URL hiện tại
-  currentUrl: string = '';
-  private sub!: Subscription;
-
   constructor(
     private router: Router
-  ){}
+  ) { }
 
   ngOnInit() {
     this.addEventCheckNetwork();
-  }
-
-  watchUrl() {
-    this.sub = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        this.currentUrl = event.urlAfterRedirects;
-        this.currentUrl = this.currentUrl.replace("/", '');
-      });
   }
 
   updateNetworkStatus = () => {

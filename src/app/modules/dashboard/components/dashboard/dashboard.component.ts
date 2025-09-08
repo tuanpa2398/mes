@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@app/services/auth.service';
+import { AppPageComponent } from '@app/shared/components/app-page/app-page.component';
+import { SHARED_IMPORT_MODULE } from '@app/shared/share.import';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
+    SHARED_IMPORT_MODULE,
+    AppPageComponent
   ],
   templateUrl: './dashboard.component.html'
 })

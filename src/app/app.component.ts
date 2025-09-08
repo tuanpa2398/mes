@@ -44,6 +44,8 @@ export class AppComponent implements OnInit {
       .subscribe(res => {
         this.keepLoadingEffect(startTime);
         this.authService.storeUser(res);
+        console.log(res);
+        
       });
     }
 

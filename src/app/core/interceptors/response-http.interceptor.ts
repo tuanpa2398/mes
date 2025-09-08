@@ -27,6 +27,15 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
         case UNAUTHORIZED_STATUS:
           if (error.error?.error === TOKEN_EXPIRED) {
             console.log("TOKEN_EXPIRED");
+
+            // Chặn vòng lặp nếu request refresh-token bị lỗi
+            if (req.url.includes('/auth/refresh-token')) {
+              authService.logout();
+              router.navigate(['/login']);
+              toastService.info("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.");
+              return EMPTY;
+            }
+
             return authService.refreshToken().pipe(
               switchMap(res => {
                 return next(req.clone({
@@ -40,12 +49,12 @@ export const responseHttpInterceptor: HttpInterceptorFn = (req, next) => {
                 return EMPTY;
               })
             );
-          }else if (error.error?.error === TOKEN_INVALID) {
+          } else if (error.error?.error === TOKEN_INVALID) {
             authService.logout();
             router.navigate([`/unauthorize`]);
             toastService.error(error.error.message || "Từ chối truy cập. Vui lòng đăng nhập lại.");
             return EMPTY;
-          }else {
+          } else {
             toastService.error(error.error.message || "Từ chối truy cập. Vui lòng đăng nhập lại.");
             return EMPTY;
           }

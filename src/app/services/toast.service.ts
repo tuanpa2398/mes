@@ -34,7 +34,7 @@ export class ToastService {
             severity: this.severity.error, 
             detail: message, life: this.duration,
             closable: false,
-            closeIcon: ''
+            closeIcon: '',
         });
     }
 

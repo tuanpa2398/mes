@@ -767,18 +767,18 @@ span.flatpickr-weekday,
 }
 
 #wl-app-toast .p-toast-message-error {
-    background-color: rgb(54, 54, 54);
-    border-color: rgb(54, 54, 54);
+    background-color: rgb(221, 70, 70);
+    border-color: rgb(221, 70, 70);
 }
 
 #wl-app-toast .p-toast-message-success {
-    background-color: rgb(54, 54, 54);
-    border-color: rgb(54, 54, 54);
+    background-color: #46af31;
+    border-color: #46af31;
 }
 
 #wl-app-toast .p-toast-message-info {
-    background-color: rgb(54, 54, 54);
-    border-color: rgb(54, 54, 54);
+    background-color: #17506B;
+    border-color: #17506B;
 }
 
 #wl-app-toast .p-toast-summary {
@@ -787,6 +787,10 @@ span.flatpickr-weekday,
 
 #wl-app-toast .p-toast-detail {
     color: white;
+}
+
+#wl-app-toast .p-toast-message-icon{
+  display: none;
 }
 
 .wl-loader-container {

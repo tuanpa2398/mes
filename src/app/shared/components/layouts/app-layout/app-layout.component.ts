@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthService } from '@app/services/auth.service';
 import { filter, Subscription } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 type AppState = {
   page: string,
@@ -19,6 +20,8 @@ type AppState = {
   selector: 'app-layout',
   imports: [
     SHARED_IMPORT_MODULE,
+    HeaderComponent,
+    SidebarComponent
   ],
   templateUrl: './app-layout.component.html'
 })
@@ -35,6 +38,8 @@ export class AppLayoutComponent implements OnInit {
 
   private sub!: Subscription;
 
+  modalFactoryVisible: boolean = false;
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -45,6 +50,10 @@ export class AppLayoutComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  changeFactory() {
+    this.modalFactoryVisible = true;
   }
 
   watchUrl() {

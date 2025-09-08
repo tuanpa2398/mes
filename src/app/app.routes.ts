@@ -19,10 +19,10 @@ export const routes: Routes = [
         component: AppLayoutComponent,
         canActivate: [authGuard],
         children: [
-            // {
-            //     path: '',
-            //     component: DashboardComponent
-            // },
+            {
+                path: '',
+                component: DashboardComponent
+            },
             // {
             //     path: 'quan-ly-say-go',
             //     component: WoodDryingManagementComponent,
